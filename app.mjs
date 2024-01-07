@@ -4,16 +4,12 @@ import { staraNemocnica } from "./timetables.mjs";
 // logic to identify needed timetable (workday, holiday...)
 const holidays = ["1.1", "6.1", "29.3", "1.4", "1.5", "8.5", "5.7", "29.8", "1.9", "15.9", "1.11", "17.11", "24.12", "25.12", "26.12"];
 
-const today = new Date();
-const todayMonth = today.getMonth() + 1; 
-const todayDayOfMonth = today.getDate();
-
-const todayHours = String(today.getHours()).padStart(2, '0');
-const todayMinutes = String(today.getMinutes()).padStart(2, '0');
-const todayTime = `${todayHours}:${todayMinutes}`; 
+let today = new Date();
+let todayMonth = today.getMonth() + 1; 
+let todayDayOfMonth = today.getDate();
 
 function isTodayHoliday(holidays) { // function to check if today is a holiday
-    const formattedToday = `${todayDayOfMonth}.${todayMonth}`; 
+    let formattedToday = `${todayDayOfMonth}.${todayMonth}`; 
     return holidays.includes(formattedToday) || today.getDay() === 6 || today.getDay() === 0;
 }
 
@@ -24,15 +20,25 @@ if (isTodayHoliday(holidays)) {
     todaysTimetable = "schoolHolidays";
 } else {
     todaysTimetable = "workDays"; // otherwise workday
-}
-console.log(todaysTimetable);    
-console.log(todayTime);
+}   
 
 
 // trying to retrieve relevant data from timetables
+let nowMinutesTotal = (today.getHours() * 60) + today.getMinutes(); // current time to minutes
 
+let numOneHavlickova = staraNemocnica[1].havlickova[todaysTimetable];
 
+let test = [];
+for (let i = 0; i < numOneHavlickova.length; i++) {
+    let split = (numOneHavlickova[i]).split(':').map(Number); 
+    let splitToMin = split[0] * 60 + split[1];
 
+    if (test.length < 3 && splitToMin > nowMinutesTotal) {
+        test.push(numOneHavlickova[i]) // retrieved next 3 trams based on current time and day
+    }
+
+}
+console.log("Linka: 1, Smer: Havlíčkova, Nasledujúce spoje: " + test);
 
 
 
