@@ -23,22 +23,35 @@ if (isTodayHoliday(holidays)) {
 }   
 
 
-// trying to retrieve relevant data from timetables
-let nowMinutesTotal = (today.getHours() * 60) + today.getMinutes(); // current time to minutes
+// retrieving relevant data from timetables
+let nowMinutesTotal = (today.getHours() * 60) + today.getMinutes(); // current time in minutes
 
-let numOneHavlickova = staraNemocnica[1].havlickova[todaysTimetable];
+function getNextTwoTrams(stopTimetable, nowMinutesTotal) {
+    let nextTwoTrams = [];
+    for (let i = 0; i < stopTimetable.length; i++) {
+        let split = stopTimetable[i].split(':').map(Number);
+        let splitToMin = split[0] * 60 + split[1];
 
-let test = [];
-for (let i = 0; i < numOneHavlickova.length; i++) {
-    let split = (numOneHavlickova[i]).split(':').map(Number); 
-    let splitToMin = split[0] * 60 + split[1];
-
-    if (test.length < 3 && splitToMin > nowMinutesTotal) {
-        test.push(numOneHavlickova[i]) // retrieved next 3 trams based on current time and day
+        if (nextTwoTrams.length < 2 && splitToMin > nowMinutesTotal) {
+            nextTwoTrams.push(stopTimetable[i]); // retrieve next 2 trams based on current time and day
+        }
     }
-
+    return nextTwoTrams;
 }
-console.log("Linka: 1, Smer: Havlíčkova, Nasledujúce spoje: " + test);
+
+let zastavka = [];
+for (let line in staraNemocnica) {
+    if (staraNemocnica.hasOwnProperty(line)) {
+        for (let stop in staraNemocnica[line]) {
+            if (staraNemocnica[line].hasOwnProperty(stop)) {
+                let timetable = staraNemocnica[line][stop][todaysTimetable];
+                let nextTrams = getNextTwoTrams(timetable, nowMinutesTotal);
+                zastavka.push(`[${line}][${stop}][${nextTrams.join(', ')}]`); // loop through staraNemocnica with getNextTwoTrams
+            }
+        }
+    }
+}
+console.log(zastavka);
 
 
 
