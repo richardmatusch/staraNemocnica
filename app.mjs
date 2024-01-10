@@ -33,7 +33,7 @@ function getNextTwoTrams(stopTimetable, nowMinutesTotal) {
         let splitToMin = split[0] * 60 + split[1];
 
         if (nextTwoTrams.length < 2 && splitToMin > nowMinutesTotal) {
-            nextTwoTrams.push(stopTimetable[i]); // retrieve next 2 trams based on current time and day
+            nextTwoTrams.push(stopTimetable[i]); // retrieving next 2 trams based on current time and day
         }
     }
     return nextTwoTrams;
@@ -46,13 +46,22 @@ for (let line in staraNemocnica) {
             if (staraNemocnica[line].hasOwnProperty(stop)) {
                 let timetable = staraNemocnica[line][stop][todaysTimetable];
                 let nextTrams = getNextTwoTrams(timetable, nowMinutesTotal);
-                zastavka.push(`[${line}][${stop}][${nextTrams.join(', ')}]`); // loop through staraNemocnica with getNextTwoTrams
+                zastavka.push([[line],[stop],nextTrams]); // looping through staraNemocnica with getNextTwoTrams and building array
             }
         }
     }
 }
-console.log(zastavka);
 
+for (let i = 0; i < zastavka.length; i++) {
+
+    if (zastavka[i][2][0] !== undefined) {
+        let split = zastavka[i][2][0].split(':').map(Number);
+        let splitToMin = split[0] * 60 + split[1];
+        zastavka[i][2][0] = splitToMin - nowMinutesTotal + " min."; // converting 1st tram time to minutes till departure
+    } 
+}
+    
+console.log(zastavka);
 
 
 

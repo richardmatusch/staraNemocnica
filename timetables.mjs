@@ -1,6 +1,12 @@
+const vazecka = "Važecká"
+const havlickova = "Havlíčkova"
+const stanicneNamestie = "Staničné námestie"
+const sochaJanaPavlaII = "Socha Jána Pavla II"
+const botanickaZahrada = "Botanická záhrada"
+
 export const staraNemocnica = {
     1: {
-        vazecka: { 
+        [vazecka]: { 
             workDays: [
                 "5:00", "5:20", "5:40",
                 "6:00", "6:18", "6:33", "6:48",
@@ -63,7 +69,7 @@ export const staraNemocnica = {
                 "22:00", "22:27"
             ] },
 
-        havlickova: { 
+        [havlickova]: { 
             workDays: [
                 "4:46",
                 "5:06", "5:26", "5:46",
@@ -130,7 +136,7 @@ export const staraNemocnica = {
     },
 
     3: {
-        vazecka: { 
+        [vazecka]: { 
             workDays: [
                 "4:50",
                 "5:10", "5:30", "5:50",
@@ -198,7 +204,7 @@ export const staraNemocnica = {
                 "23:04"
             ] },
 
-        stanicneNamestie: { 
+        [stanicneNamestie]: { 
             workDays: [
                 "4:56",
                 "5:16", "5:36", "5:56",
@@ -265,7 +271,7 @@ export const staraNemocnica = {
     },
 
     4: {
-        sochaJanaPavlaII: { 
+        [sochaJanaPavlaII]: { 
             workDays: [
                 "5:15", "5:45", "5:59",
                 "6:13", "6:28", "6:43", "6:58",
@@ -326,7 +332,7 @@ export const staraNemocnica = {
     },
 
     7: {
-        botanickaZahrada: { 
+        [botanickaZahrada]: { 
             workDays: [
                 "5:01", "5:31",
                 "6:01", "6:21", "6:40", "6:55",
