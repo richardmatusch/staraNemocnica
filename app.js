@@ -1,4 +1,4 @@
-import { staraNemocnica } from "./timetables.mjs";
+import { staraNemocnica } from "./timetables.js";
 
 
 // logic to identify needed timetable (workday, holiday...)
