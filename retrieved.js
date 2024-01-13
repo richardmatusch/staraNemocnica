@@ -39,7 +39,7 @@ function getNextTwoTrams(stopTimetable, nowMinutesTotal) {
     return nextTwoTrams;
 }
 
-let zastavka = [];
+var zastavka = [];
 for (let line in staraNemocnica) {
     if (staraNemocnica.hasOwnProperty(line)) {
         for (let stop in staraNemocnica[line]) {
@@ -70,13 +70,7 @@ for (let i = 0; i < zastavka.length; i++) {
     }
 }
 
-console.log(zastavka);
-
-
-
-
-
-
+export { zastavka };
 
 
 
