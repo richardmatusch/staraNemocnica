@@ -1,8 +1,8 @@
-const vazecka = "Važecká"
-const havlickova = "Havlíčkova"
-const stanicneNamestie = "Staničné námestie"
-const sochaJanaPavlaII = "Socha Jána Pavla II"
-const botanickaZahrada = "Botanická záhrada"
+const vazecka = "VAZECKA"
+const havlickova = "HAVLICKOVA"
+const stanicneNamestie = "STANICNE NAMESTIE"
+const sochaJanaPavlaII = "SOCHA JANA PAVLA II"
+const botanickaZahrada = "BOTANICKA ZAHRADA"
 
 export const staraNemocnica = {
     1: {
