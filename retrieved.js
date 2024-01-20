@@ -62,7 +62,7 @@ for (let i = 0; i < zastavka.length; i++) {
     if (zastavka[i][2][0] !== undefined) {
         let split = zastavka[i][2][0].split(':').map(Number);
         let splitToMin = split[0] * 60 + split[1];
-        zastavka[i][2][0] = splitToMin - nowMinutesTotal; // converting 1st tram time to minutes till departure
+        zastavka[i][2][0] = splitToMin - nowMinutesTotal; // converting 1st departure time to minutes till departure
     } 
 }
 
@@ -72,12 +72,9 @@ for (let i = 0; i < zastavka.length; i++) {
     if (zastavka[i][2][0] !== undefined) {
         zastavka[i][2][0] += " MIN."
     } else {
-        zastavka[i][2][0] = "-" // adding " min." and "-" to the first time value of each tram
+        zastavka[i][2][0] = "-" // adding " min." and "-" to the first time value of each departure
     }
 }
-
-console.log(zastavka);
-
 
 export { zastavka };
 
