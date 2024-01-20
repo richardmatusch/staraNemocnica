@@ -26,31 +26,37 @@ if (isTodayHoliday(holidays)) {
 // retrieving relevant data from timetables
 let nowMinutesTotal = (today.getHours() * 60) + today.getMinutes(); // current time in minutes
 
-function getNextTwoTrams(stopTimetable, nowMinutesTotal) {
-    let nextTwoTrams = [];
+function getNextTwoDepartures(stopTimetable, nowMinutesTotal) {
+    let nextTwoDepartures = [];
     for (let i = 0; i < stopTimetable.length; i++) {
         let split = stopTimetable[i].split(':').map(Number);
         let splitToMin = split[0] * 60 + split[1];
 
-        if (nextTwoTrams.length < 2 && splitToMin > nowMinutesTotal) {
-            nextTwoTrams.push(stopTimetable[i]); // retrieving next 2 trams based on current time and day
+        if (nextTwoDepartures.length < 2 && splitToMin > nowMinutesTotal) {
+            nextTwoDepartures.push(stopTimetable[i]); // retrieving next 2 departures based on current time and day
         }
     }
-    return nextTwoTrams;
+    return nextTwoDepartures;
 }
 
+let testVariable = 1; // 1= display trams, 2=display buses, 3= display all
+
 var zastavka = [];
-for (let line in staraNemocnica) {
-    if (staraNemocnica.hasOwnProperty(line)) {
-        for (let stop in staraNemocnica[line]) {
-            if (staraNemocnica[line].hasOwnProperty(stop)) {
-                let timetable = staraNemocnica[line][stop][todaysTimetable];
-                let nextTrams = getNextTwoTrams(timetable, nowMinutesTotal);
-                zastavka.push([[line],[stop],nextTrams]); // looping through staraNemocnica with getNextTwoTrams and building array
+for (let mode in staraNemocnica) {
+    if (staraNemocnica.hasOwnProperty(mode)) {
+        for (let line in staraNemocnica[mode]) {
+            if (staraNemocnica[mode].hasOwnProperty(line)) {
+                for (let stop in staraNemocnica[mode][line]) {
+                    if (staraNemocnica[mode][line].hasOwnProperty(stop)) { 
+                        let timetable = staraNemocnica[mode][line][stop][todaysTimetable];
+                        let nextDepartures = getNextTwoDepartures(timetable, nowMinutesTotal);
+                        zastavka.push([[line],[stop],nextDepartures]);
+                    }
+                }
             }
         }
     }
-}
+}  // looping through staraNemocnica with getNextTwoTrams and building array   
 
 for (let i = 0; i < zastavka.length; i++) {
     if (zastavka[i][2][0] !== undefined) {
@@ -69,6 +75,9 @@ for (let i = 0; i < zastavka.length; i++) {
         zastavka[i][2][0] = "-" // adding " min." and "-" to the first time value of each tram
     }
 }
+
+console.log(zastavka);
+
 
 export { zastavka };
 

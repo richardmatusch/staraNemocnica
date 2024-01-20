@@ -1,6 +1,6 @@
 {
     "name": "zastavka",
-    "version": "0.1.0",
-    "description": "tram stop sign that displays next tram departures based on current time/day/holiday...",
+    "version": "0.1.1",
+    "description": "tram/bus stop sign that displays next tram departures based on current time/day/holiday...",
     "type": "module"  
 }
