@@ -1,0 +1,18 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3.5em;
+}
+
+.filter-buttons {
+    text-align: right;
+}
+
+.table {
+    text-align: center;
+    font-size: 1.5rem;
+    max-width: 700px;
+    margin: auto;
+}
