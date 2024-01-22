@@ -70,7 +70,7 @@ zastavka.sort((a, b) => a[2][0] - b[2][0]); // sorting from earliest departure
 
 for (let i = 0; i < zastavka.length; i++) {
     if (zastavka[i][2][0] !== undefined) {
-        zastavka[i][2][0] += " MIN."
+        zastavka[i][2][0] += " min."
     } else {
         zastavka[i][2][0] = "-" // adding " min." and "-" to the first time value of each departure
     }

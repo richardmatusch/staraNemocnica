@@ -1,12 +1,12 @@
-const vazecka = "VAZECKA"
-const havlickova = "HAVLICKOVA"
-const stanicneNamestie = "STANICNE NAM."
-const sochaJanaPavlaII = "SOCHA J.P. II"
-const botanickaZahrada = "BOTANICKA Z."
-const sebastovce = "SEBASTOVCE"
-const podhradova = "PODHRADOVA"
-const ocCassovia = "OC CASSOVIA"
-const exnarova = "EXNAROVA"
+const vazecka = "Važecká"
+const havlickova = "Havlíčkova"
+const stanicneNamestie = "Staničné nám."
+const sochaJanaPavlaII = "Socha J.P. II"
+const botanickaZahrada = "Botanická z."
+const sebastovce = "Šebastovce"
+const podhradova = "Podhradová"
+const ocCassovia = "OC Cassovia"
+const exnarova = "Exnárova"
 
 
 export const staraNemocnica = {
