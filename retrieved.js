@@ -1,4 +1,4 @@
-import { staraNemocnica } from "./timetables.js";
+import { zastavky } from "./timetables.js";
 
 
 // logic to identify needed timetable (workday, holiday...)
@@ -39,16 +39,14 @@ function getNextTwoDepartures(stopTimetable, nowMinutesTotal) {
     return nextTwoDepartures;
 }
 
-let testVariable = 1; // 1= display trams, 2=display buses, 3= display all
-
 var zastavka = [];
-for (let mode in staraNemocnica) {
-    if (staraNemocnica.hasOwnProperty(mode)) {
-        for (let line in staraNemocnica[mode]) {
-            if (staraNemocnica[mode].hasOwnProperty(line)) {
-                for (let stop in staraNemocnica[mode][line]) {
-                    if (staraNemocnica[mode][line].hasOwnProperty(stop)) { 
-                        let timetable = staraNemocnica[mode][line][stop][todaysTimetable];
+for (let stops in zastavky) {
+    if (zastavky.hasOwnProperty(stops)) {
+        for (let line in zastavky[stops]) {
+            if (zastavky[stops].hasOwnProperty(line)) {
+                for (let stop in zastavky[stops][line]) {
+                    if (zastavky[stops][line].hasOwnProperty(stop)) { 
+                        let timetable = zastavky[stops][line][stop][todaysTimetable];
                         let nextDepartures = getNextTwoDepartures(timetable, nowMinutesTotal);
                         zastavka.push([[line],[stop],nextDepartures]);
                     }
@@ -56,7 +54,7 @@ for (let mode in staraNemocnica) {
             }
         }
     }
-}  // looping through staraNemocnica with getNextTwoTrams and building array   
+}  // looping through zastavky with getNextTwoTrams and building array   
 
 for (let i = 0; i < zastavka.length; i++) {
     if (zastavka[i][2][0] !== undefined) {
@@ -77,6 +75,7 @@ for (let i = 0; i < zastavka.length; i++) {
 }
 
 export { zastavka };
+
 
 
 

@@ -1,3 +1,4 @@
+const staraNemocnica = "Stará nemocnica"
 const vazecka = "Važecká"
 const havlickova = "Havlíčkova"
 const stanicneNamestie = "Staničné nám."
@@ -8,10 +9,9 @@ const podhradova = "Podhradová"
 const ocCassovia = "OC Cassovia"
 const exnarova = "Exnárova"
 
-
-export const staraNemocnica = {
+export const zastavky = {
     
-trams: {
+[staraNemocnica]: {
         1: {
             [vazecka]: { 
                 workDays: [
@@ -397,9 +397,8 @@ trams: {
                     "20:02", "20:22", "20:42",
                     "21:12", "21:31"
                 ] }
-        }
-    },
-buses: { 
+        },
+     
         12: {
             [sebastovce]: {
                 workDays: [
@@ -777,4 +776,3 @@ buses: {
         }
     } 
 }
-
