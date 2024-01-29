@@ -14,6 +14,15 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             const tableBody = document.getElementById('zastavka');
+            const filterKey = 'currentFilter';
+
+            function getCurrentFilter() {
+                return localStorage.getItem(filterKey) || 'tram'; // default to tram if not set
+            }
+
+            function setCurrentFilter(type) {
+                localStorage.setItem(filterKey, type);
+            }
 
             // filtering and displaying rows based on the button clicked
             function filterRows(type) {
@@ -41,6 +50,9 @@
                         tableBody.appendChild(row);
                     }
                 });
+
+                // seting the current filter
+                setCurrentFilter(type);
             }
 
             // buttons event listeners
@@ -59,13 +71,13 @@
                 filterRows('all');
             });
 
-            // displaying trams by default
-            filterRows('tram');
+            // getting the current filter and displaying rows accordingly
+            const currentFilter = getCurrentFilter();
+            filterRows(currentFilter);
+
+            setInterval(() => location.reload(), 60000);
         });
     </script>
-    <script>
-        setInterval(() => location.reload(), 60000);
-    </script>   
     <title>Stará nemocnica</title>
 </head>
 <body>
@@ -88,5 +100,6 @@
         <tbody id="zastavka">
         </tbody>
     </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
